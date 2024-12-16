@@ -75,7 +75,7 @@ task1 :: proc() {
   plan := parse_plan()
   defer delete(plan.data)
 
-  cost, start_pos, end_pos := make_const_plan(plan)
+  cost, start_pos, end_pos := make_cost_plan(plan)
   defer delete(cost.data)
   assert(start_pos != {})
   assert(end_pos != {})
@@ -89,7 +89,7 @@ task2 :: proc() {
   plan := parse_plan()
   defer delete(plan.data)
 
-  cost, start_pos, end_pos := make_const_plan(plan)
+  cost, start_pos, end_pos := make_cost_plan(plan)
   defer delete(cost.data)
   assert(start_pos != {})
   assert(end_pos != {})
@@ -159,7 +159,7 @@ parse_plan :: proc() -> Plan(u8) {
   return plan
 }
 
-make_const_plan :: proc(
+make_cost_plan :: proc(
   plan: Plan($T),
 ) -> (
   cost: Plan(DirectionCosts),
